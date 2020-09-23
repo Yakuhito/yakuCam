@@ -34,6 +34,7 @@ def video_processing_thread():
 		img_out = modes[selected_mode][1].process(frame, time.time() - current_mode_start_time)
 
 		cv2.imshow('Preview', img_out)
+		img_out = cv2.cvtColor(img_out, cv2.COLOR_BGR2RGB)
 		fake.schedule_frame(img_out)
 		if cv2.waitKey(1) & 0xFF == ord('q'):
 			quit = True
